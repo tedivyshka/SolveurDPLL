@@ -38,9 +38,31 @@ let coloriage = [[1;2;3];[4;5;6];[7;8;9];[10;11;12];[13;14;15];[16;17;18];[19;20
 (* simplifie : int -> int list list -> int list list 
    applique la simplification de l'ensemble des clauses en mettant
    le littéral l à vrai *)
-let simplifie l clauses =
-  (* à compléter *)
-  []
+ let rec supp_clause   i  claus = 
+          match claus with 
+            |[]->[]
+            |x::r->  if ( let rec recherche_litteral i claus = 
+              match claus with 
+              |[]->false 
+              | x::r-> if x=i then true else   (recherche_litteral i r) in recherche_litteral i x ) then supp_clause i r 
+                    else [x] @supp_clause i r ;; 
+          
+          
+         
+         let rec  recherche_et_suppression  i l = 
+           match l  with 
+            |[]-> []
+            |x::r -> [ let rec aux   i  claus = 
+            match claus with
+            |[]->[]
+            |x::r->   if (x=(-i)) then   aux i r 
+               else [x]@aux i r in aux i x] @ recherche_et_suppression  i r;;   
+            
+               
+            
+         let simplifie l clauses =
+          let nv_clause = supp_clause l  clauses in 
+          recherche_et_suppression l nv_clause ;;  
 
 (* solveur_split : int list list -> int list -> int list option
    exemple d'utilisation de `simplifie' *)
