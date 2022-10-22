@@ -98,9 +98,16 @@ let unitaire clauses =
     - si `clauses' contient au moins un littéral pur, retourne
       ce littéral ;
     - sinon, lève une exception `Failure "pas de littéral pur"' *)
+ let rec  is_pur l1 l2 = 
+   match l1 with  
+  |[]-> failwith  "NO PUR LITTERAL" 
+  |x::r->   if (not (mem (-x) l2)   ) then x else           
+          is_pur r l2;;        
+
+
 let pur clauses =
-  (* à compléter *)
-  0
+ let l = List.flatten(clauses)  in 
+     is_pur l l ;; 
 
 (* solveur_dpll_rec : int list list -> int list -> int list option *)
 let rec solveur_dpll_rec clauses interpretation =
