@@ -41,10 +41,7 @@ let coloriage = [[1;2;3];[4;5;6];[7;8;9];[10;11;12];[13;14;15];[16;17;18];[19;20
  let rec supp_clause   i  claus = 
           match claus with 
             |[]->[]
-            |x::r->  if ( let rec recherche_litteral i claus = 
-              match claus with 
-              |[]->false 
-              | x::r-> if x=i then true else   (recherche_litteral i r) in recherche_litteral i x ) then supp_clause i r 
+            |x::r->  if ( mem i x ) then supp_clause i r 
                     else [x] @supp_clause i r ;; 
           
           
