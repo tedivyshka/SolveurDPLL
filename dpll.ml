@@ -39,25 +39,14 @@ let coloriage = [[1;2;3];[4;5;6];[7;8;9];[10;11;12];[13;14;15];[16;17;18];[19;20
    applique la simplification de l'ensemble des clauses en mettant
    le littéral l à vrai *)
 
-let rec supp_clause i  claus =
-  match claus with
-  |[]->[]
-  |x::r->  if ( mem i x ) then supp_clause i r
-      else [x] @supp_clause i r ;;
-
-let rec  recherche_et_suppression  i l =
-  match l  with
-  |[]-> []
-  |x::r -> [ let rec aux i claus =
-               match claus with
-               |[]->[]
-               |x::r->   if (x=(-i)) then   aux i r
-                   else [x]@aux i r in aux i x] @ recherche_et_suppression  i r;;
-
 let simplifie l clauses =
-  let nv_clause = supp_clause l  clauses in
-  recherche_et_suppression l nv_clause ;;
-
+  let filter tmp_clauses =
+    if List.mem l tmp_clauses then None
+    else
+      Some(let simplifie_aux x =
+      if (x <> -l) then Some(x) else None
+      in (filter_map simplifie_aux tmp_clauses))
+  in filter_map filter (clauses)
 
 
 (* solveur_split : int list list -> int list -> int list option
@@ -135,5 +124,6 @@ let () = print_modele (solveur_dpll_rec systeme [])
 let () = print_modele (solveur_dpll_rec coloriage [])
 
 let () =
-  let clauses = Dimacs.parse Sys.argv.(1) in
-  print_modele (solveur_dpll_rec clauses [])
+  if(Array.length Sys.argv = 1) then failwith "Usage: ./dpll [.cnf file]" else
+  let clauses = Dimacs.parse Sys.argv.(1)
+  in print_modele (solveur_dpll_rec clauses [])

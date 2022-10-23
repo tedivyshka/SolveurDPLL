@@ -19,12 +19,12 @@ Questions sur votre code
    et que ensuite `./dpll sudoku-4x4.cnf` donne la réponse attendue (voir
    fichier README) ?
 
-**à remplir**
+Oui, ./dpll sudoku-4x4.cnf renvoit bien la réponse attendue.
 
 ---
 
 1. Avez-vous utilisé la fonction `filter_map` (donné dans dpll.ml)
-   dans votre implémentation de `simplifie` ? 
+   dans votre implémentation de `simplifie` ?
    - Si oui, expliquez en quelques phrases en français comment vous
      l'avez utilisée.
    - Si non, expliquez en quelques phrases en français comment
@@ -43,7 +43,9 @@ Questions sur votre code
    comment ces fonctions auxiliaires sont utilisées dans votre
    implémentation de la fonction `unitaire`.
 
-**à remplir**
+Pas de fonction auxiliaire pour unitaire, la fonction traite un 'int list list' élément par élémént,
+si la fonction trouve une liste avec un seul élément, elle renvoit ce élément,
+sinon elle renvoit une exception Not_found.
 
 ---
 
@@ -66,7 +68,10 @@ Questions sur votre code
 
 5. Avez-vous d'autres remarques sur votre rendu ? (question optionnelle)
 
-**à remplir**
+Nous avons ajouté une ligne
+"if(Array.length Sys.argv = 1) then failwith "Usage: ./dpll [.cnf file]" else ..."
+pour expliquer l'usage du code si l'utilisateur lance ./dpll sans arguments.
+(sinon le terminal affiche: Invalid_argument("index out of bounds"), ce qui n'est pas très claire)
 
 ---
 
