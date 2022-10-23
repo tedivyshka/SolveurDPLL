@@ -38,9 +38,28 @@ let coloriage = [[1;2;3];[4;5;6];[7;8;9];[10;11;12];[13;14;15];[16;17;18];[19;20
 (* simplifie : int -> int list list -> int list list 
    applique la simplification de l'ensemble des clauses en mettant
    le littéral l à vrai *)
-let simplifie l clauses =
-  (* à compléter *)
-  []
+ let rec supp_clause   i  claus = 
+          match claus with 
+            |[]->[]
+            |x::r->  if ( mem i x ) then supp_clause i r 
+                    else [x] @supp_clause i r ;; 
+          
+          
+         
+         let rec  recherche_et_suppression  i l = 
+           match l  with 
+            |[]-> []
+            |x::r -> [ let rec aux   i  claus = 
+            match claus with
+            |[]->[]
+            |x::r->   if (x=(-i)) then   aux i r 
+               else [x]@aux i r in aux i x] @ recherche_et_suppression  i r;;   
+            
+               
+            
+         let simplifie l clauses =
+          let nv_clause = supp_clause l  clauses in 
+          recherche_et_suppression l nv_clause ;;  
 
 (* solveur_split : int list list -> int list -> int list option
    exemple d'utilisation de `simplifie' *)
@@ -76,9 +95,16 @@ let unitaire clauses =
     - si `clauses' contient au moins un littéral pur, retourne
       ce littéral ;
     - sinon, lève une exception `Failure "pas de littéral pur"' *)
+ let rec  is_pur l1 l2 = 
+   match l1 with  
+  |[]-> failwith  "NO PUR LITTERAL" 
+  |x::r->   if (not (mem (-x) l2)   ) then x else           
+          is_pur r l2;;        
+
+
 let pur clauses =
-  (* à compléter *)
-  0
+ let l = List.flatten(clauses)  in 
+     is_pur l l ;; 
 
 (* solveur_dpll_rec : int list list -> int list -> int list option *)
 let rec solveur_dpll_rec clauses interpretation =
