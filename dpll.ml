@@ -125,15 +125,15 @@ let rec solveur_dpll_rec clauses interpretation =
         | h::rest ->
             let cnf1 = simplifie h clauses in
             let cnf2 = simplifie (-h) clauses in
-            let try1 = solveur_dpll_rec cnf1 (h::(rest@interpretation)) in
-            if(try1 = None) then solveur_dpll_rec cnf2 ((-h)::(rest@interpretation))
+            let try1 = solveur_dpll_rec cnf1 (h::interpretation) in
+            if(try1 = None) then solveur_dpll_rec cnf2 ((-h)::interpretation)
             else try1
 
 
 (* tests *)
-(*let () = print_modele (solveur_dpll_rec systeme [])
+let () = print_modele (solveur_dpll_rec systeme [])
 let () = print_modele (solveur_dpll_rec coloriage [])
-*)
+
 let () =
   let clauses = Dimacs.parse Sys.argv.(1) in
   print_modele (solveur_dpll_rec clauses [])
