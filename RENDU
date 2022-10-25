@@ -67,7 +67,10 @@ sinon elle continue de tester tous les elemnts de l1) .
    `solveur_split` et `solveur_dpll_rec` ont un comportement
    différent, et expliquez les différences entre ces deux fonctions.
 
-**à remplir**
+les deux fonctions `solveur_split` et `solveur_dpll_rec` montre un comportement différent sur la formule de l'exemple_7_2.
+   En effet, elles retournent respectivement 'SAT 1 -2 0' et 'SAT -2 -3 0'. 
+   explication : 
+   dans le cas de `solveur_dpll_rec` qui traite en priorité les clauses unitaires et pures tandis que `solveur_split` ne le fait pas et passe directement à l'étape split
 
 ---
 
