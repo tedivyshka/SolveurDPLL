@@ -8,9 +8,10 @@ Date limite: 28 octobre 2022, 23h59
 
 Identité
 --------
-Nombre de binôme: **à remplir**
+Nombre de binôme: 39
 Nom, prénom 1: **à remplir**
-Nom, prénom 2: **à remplir**
+Nom, prénom 2: Benabbas ,Ikram
+
 
 
 Questions sur votre code
@@ -54,7 +55,11 @@ sinon elle renvoit une exception Not_found.
    quelques phrases en français comment ces fonctions auxiliaires sont
    utilisées dans votre implémentation de la fonction `pur`.
 
-**à remplir**
+
+Fonctions auxiliaire utilisés dans pur sont List.Flattent afin de concatener toute les sous-liste de la liste 
+clause puis on a utilisé la fonction auxilaire is_pur l1 l2 afin de comparer tout les elemnts de l1 avec les elements de l2 
+(par exemple : x un litteral dans l1... is_pur l1 l2 regarde si (not x) ne figure pas dans l2 si c'est le cas elle renvoie x 
+sinon elle continue de tester tous les elemnts de l1) .
 
 ---
 
@@ -62,7 +67,10 @@ sinon elle renvoit une exception Not_found.
    `solveur_split` et `solveur_dpll_rec` ont un comportement
    différent, et expliquez les différences entre ces deux fonctions.
 
-**à remplir**
+les deux fonctions `solveur_split` et `solveur_dpll_rec` montre un comportement différent sur la formule de l'exemple_7_2.
+   En effet, elles retournent respectivement 'SAT 1 -2 0' et 'SAT -2 -3 0'. 
+   explication : 
+   dans le cas de `solveur_dpll_rec` qui traite en priorité les clauses unitaires et pures tandis que `solveur_split` ne le fait pas et passe directement à l'étape split
 
 ---
 
