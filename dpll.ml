@@ -66,8 +66,8 @@ let rec solveur_split clauses interpretation =
     | _    -> branche
 
 (* tests *)
-(* let () = print_modele (solveur_split systeme []) *)
-(* let () = print_modele (solveur_split coloriage []) *)
+(*let () = print_modele (solveur_split systeme [])
+let () = print_modele (solveur_split coloriage [])*)
 
 (* solveur dpll récursif *)
 

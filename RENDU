@@ -9,7 +9,7 @@ Date limite: 28 octobre 2022, 23h59
 Identité
 --------
 Nombre de binôme: 39
-Nom, prénom 1: **à remplir**
+Nom, prénom 1: Vyshka, Tedi
 Nom, prénom 2: Benabbas ,Ikram
 
 
@@ -31,7 +31,14 @@ Oui, ./dpll sudoku-4x4.cnf renvoit bien la réponse attendue.
    - Si non, expliquez en quelques phrases en français comment
      fonctionne votre implémentation de `simplifie`.
 
-**à remplir**
+Oui, nous avons utilisé la fonction 'filter_map' simplifie
+avec un fonction filter qui verifie un par un que chaque liste
+contient l: 
+si oui la fonction renvoit None, et filter_map continue
+sur le reste de la liste;
+si non alors à l'aide d'une deuxième fonction 
+simplifie_aux la fonction vérifie la prèsence du littéral -l
+qui doit être supprimé.
 
 ---
 
@@ -56,10 +63,10 @@ sinon elle renvoit une exception Not_found.
    utilisées dans votre implémentation de la fonction `pur`.
 
 
-Fonctions auxiliaire utilisés dans pur sont List.Flattent afin de concatener toute les sous-liste de la liste 
-clause puis on a utilisé la fonction auxilaire is_pur l1 l2 afin de comparer tout les elemnts de l1 avec les elements de l2 
+Fonctions auxiliaires utilisées dans pur sont: List.Flatten afin de concatener toute les sous-liste de la liste 
+clause, puis nous avons utilisé la fonction auxilaire is_pur l1 l2 afin de comparer tout les elements de l1 avec les elements de l2 
 (par exemple : x un litteral dans l1... is_pur l1 l2 regarde si (not x) ne figure pas dans l2 si c'est le cas elle renvoie x 
-sinon elle continue de tester tous les elemnts de l1) .
+sinon elle continue de tester tous les elements de l1) .
 
 ---
 
@@ -67,10 +74,9 @@ sinon elle continue de tester tous les elemnts de l1) .
    `solveur_split` et `solveur_dpll_rec` ont un comportement
    différent, et expliquez les différences entre ces deux fonctions.
 
-les deux fonctions `solveur_split` et `solveur_dpll_rec` montre un comportement différent sur la formule de l'exemple_7_2.
-   En effet, elles retournent respectivement 'SAT 1 -2 0' et 'SAT -2 -3 0'. 
-   explication : 
-   dans le cas de `solveur_dpll_rec` qui traite en priorité les clauses unitaires et pures tandis que `solveur_split` ne le fait pas et passe directement à l'étape split
+les deux fonctions `solveur_split` et `solveur_dpll_rec` montrent un comportement différent sur la formule de l'exemple_7_2.
+En effet, elles retournent respectivement 'SAT 1 -2 0' et 'SAT -2 -3 0'. 
+Explication : dans le cas de `solveur_dpll_rec` qui traite en priorité les clauses unitaires et pures tandis que `solveur_split` ne le fait pas et passe directement à l'étape split
 
 ---
 
